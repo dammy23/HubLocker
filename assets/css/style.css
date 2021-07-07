@@ -6,14 +6,27 @@ header section
 .mainmenu__wrap{
   background-color: #f6be17 !important;
 }
+.forcefullwidth_wrapper_tp_banner{
+  height:400px !important;
+}
+#rev_slider_98_1{
+  height:400px !important;
+}
+#rev_slider_98_1_wrapper{
+    height:400px !important;
+}
 .header{
   z-index: 10;
   position: relative;
 }
+
 .main__menu {
   display: flex;
   justify-content: left;
 
+}
+.slotholder{
+  height: 400px !important;
 }
 .main__menu > li > a {
     color: #333333;
@@ -162,14 +175,34 @@ span .viewguide{
 }
 
 @media only screen and (max-width: 1039px) {
+  .tp-parallax-wrap{
+    top:120px !important;
+
+  }
+  #slide-280-layer-113{
+    right:-105px;
+      min-height:170px !important;
+  }
+  #searchform{
+    margin-top: 50px;
+  }
+  #slide-280-layer-1{
+      right:-50px;
+
+
+      z-index: 100000 !important;
+  }
   .sidebar {
     width:200px !important;
 
+  }
+  .main-content {
+    margin-right: 20px !important;
+    padding: 5px 40px 20px 40px;
+  }
+
 }
-.main-content {
-  margin-right: 20px !important;
-}
-}
+
 @media only screen and (max-width: 767px) {
   .sort-div {
     font-size: 15px;
@@ -195,7 +228,7 @@ span .viewguide{
     min-width:100% !important;
 }
 }
-.dropdown-content {
+.dropdown .dropdown-content {
   display: none;
   position: absolute;
   background-color: #bcbab4;

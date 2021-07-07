@@ -14,6 +14,8 @@
     <link href="assets/revolution/css/settings.css" rel="stylesheet">
 <link href="assets/revolution/css/layers.css" rel="stylesheet">
 <link href="assets/revolution/css/navigation.css" rel="stylesheet">
+<link href="assets/css/responsive.css" rel="stylesheet">
+<link href="assets/css/meanmenu.css" rel="stylesheet">
     <!-- Bootstrap fremwork main css -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!-- Theme main style -->
@@ -57,12 +59,30 @@
 
                                     </ul>
                                 </nav>
+
+
                             </div>
                             </div>
 
                         </div>
-                    </div>
+                        <div class="mobile-menu clearfix visible-xs visible-sm">
+                            <nav id="mobile_dropdown">
+                                <ul>
+                                  <li class="drop"><a href="index.html">Home</a></li>
+                                  <li class="drop"><a href="index.html">Find a Locker</a></li>
+                                  <li class="drop"><a href="index.html">Size Guide</a></li>
+                                  <li class="drop"><a href="index.html">Locations</a></li>
+                                  <li><a href="#">Help Center</a></li>
 
+                                  <li class="separator"></li>
+                                  <li><a href="#">My Account</a></li>
+                                  <li><a href="#">080-188-0872</a></li>
+                                  <li><a href="#"><input type="button" class="header-btn btn"  value="PAY YOUR BILLS"></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="mobile-menu-area"></div>
                 </div>
 
             <!-- End Mainmenu Area -->
@@ -88,15 +108,15 @@
                                             data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                                             data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
                                             data-width="full"
-                                            data-height="400px"
-                                            data-whitespace="nowrap"
+                                            data-height="400"
+                                            data-whitespace="wrap"
                                             data-transform_idle="o:1;"
                                             data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;"
                                             data-transform_out="s:300;s:300;"
                                             data-start="750"
                                             data-basealign="slide"
                                             data-responsive_offset="on"
-                                            data-responsive="off"
+                                            data-responsive="on"
                                             style="z-index: 5;background-color:rgba(0, 0, 0, 0);border-color:rgba(0, 0, 0, 0.50);">
                                         </div>
                                         <!-- LAYER NR. 2 -->
@@ -109,7 +129,7 @@
                                             data-fontsize="['50','70','40','30']"
                                             data-lineheight="['50','70','40','30']"
                                             data-width="none"
-                                            data-height="none"
+                                            data-height="400"
                                             data-whitespace="nowrap"
                                             data-transform_idle="o:1;"
                                             data-transform_in="z:0;rX:0deg;rY:0;rZ:0;sX:1.5;sY:1.5;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;"
@@ -223,20 +243,20 @@
                                 <td  >1N For First Rent</td>
                                 <td  >2 Available</td>
 
-                                <td><a href="#" class="btn btn-success pull-right">Progress</a></td>
+                                <td><a href="#" class="btn btn-success pull-right">Rent Now</a></td>
                             </tr>
 
                             <tr>
-                                <th scope="row"  >Small 295H* W460*D520mm</th>
+                                <th scope="row"  >Small 296H* W460*D520mm</th>
                                 <td>N450 per item/mo N15,000 XX no of orders Online only price</td>
                                 <td>1N For First Rent</td>
                                 <td>2 Available</td>
 
-                                <td><a href="#" class="btn btn-success pull-right">Progress</a></td>
+                                <td><a href="#" class="btn btn-success pull-right">Rent Now</a></td>
                             </tr>
 
                             <tr>
-                                <th scope="row">Small 295H* W460*D520mm</th>
+                                <th scope="row">Small 297H* W460*D520mm</th>
                                 <td>N450 per item/mo N15,000 XX no of orders Online only price</td>
                                 <td>1N For First Rent</td>
                                 <td>2 Available</td>
@@ -247,8 +267,9 @@
 
                           </tbody>
                       </table>
-                        <span> <i class="fa fa-plus red"></i> <a href="#" class="viewguide">View a lockers at this location</a></span>
+
                   </div>
+                    <span> <i class="fa fa-plus red"></i> <a href="#" class="viewguide">View a lockers at this location</a></span>
               </div>
 
             </div>
@@ -277,6 +298,7 @@
     <script src="assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
     <script src="assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
     <script src="assets/revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <script src="assets/js/meanmenu.js"></script>
     <script src="assets/js/main.js"></script>
     <script type="text/javascript">
         (function($) {
@@ -299,7 +321,7 @@
                         },
                         responsiveLevels:[1240,1024,778,480],
                         gridwidth:[1240,1024,778,480],
-                        gridheight:[400,350,200,200],
+                        gridheight:[600,450,400,400],
                         lazyType:"none",
                         parallax: {
                         type:"mouse",
