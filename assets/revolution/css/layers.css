@@ -10,7 +10,10 @@ author:		themepunch
 email:     	info@themepunch.com
 website:   	http://www.themepunch.com
 -----------------------------------------------------------------------------*/
+.wrapper{
+	overflow: hidden;
 
+}
 .tp-caption.Twitter-Content a,.tp-caption.Twitter-Content a:visited
 {
 	color:#0084B4!important;

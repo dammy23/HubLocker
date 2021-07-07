@@ -124,7 +124,7 @@ padding-right:20px
 .dropbtn {
   background-color: #bcbab4;
   color: black;
-  padding: 12px;
+  padding: 5px;
   font-size: 13px;
   border: none;
   cursor: pointer;
@@ -135,7 +135,66 @@ padding-right:20px
   position: relative;
   display: inline-block;
 }
+.btn-success{
+  border-radius: 0px;
+  border: none;
+  font-weight: bold;
+}
 
+th:nth-of-type(1){
+  width:20%;
+}
+td:nth-of-type(1){
+  width:40%;
+}
+td:nth-of-type(2){
+  width:20%;
+}
+td:nth-of-type(3){
+  width:20%;
+}
+.red{
+  color: red;
+}
+
+span .viewguide{
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 1039px) {
+  .sidebar {
+    width:200px !important;
+
+}
+.main-content {
+  margin-right: 20px !important;
+}
+}
+@media only screen and (max-width: 767px) {
+  .sort-div {
+    font-size: 15px;
+    font-weight: bold;
+}
+.locker-info {
+    font-size: 15px;
+    font-weight: bold;
+    padding-left: 15px;
+}
+.sidebar{
+   width:100% !important;
+
+}
+.sidebar-item{
+   width:100% !important;
+}
+.sidebar-item img {
+  min-width:100% !important;
+
+}
+.sidebar-item span {
+    min-width:100% !important;
+}
+}
 .dropdown-content {
   display: none;
   position: absolute;
@@ -144,10 +203,19 @@ padding-right:20px
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
+.table-wrap{
+  margin-top: 50px;
+}
 
+.table-striped > tbody > tr:nth-of-type(2n) {
+
+    background-color: #f9f9f9;
+
+}
 .dropdown-content a {
   color: black;
-  padding: 12px 16px;
+  padding: 5px 7px;
+  font-size:11px;
   text-decoration: none;
   display: block;
 }
@@ -161,3 +229,34 @@ padding-right:20px
 .dropdown:hover .dropbtn {
   background-color: #bcbab4;
 }
+.table {
+
+  width: 100%;
+  -webkit-box-shadow: 0px 5px 12px -12px rgba(0, 0, 0, 0.29);
+  -moz-box-shadow: 0px 5px 12px -12px rgba(0, 0, 0, 0.29);
+  box-shadow: 0px 5px 12px -12px rgba(0, 0, 0, 0.29);
+}
+  .table thead th {
+    border: none;
+    padding: 30px;
+    font-size: 13px;
+    color: #000;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  .table thead tr {
+    background: #fff;
+  }
+  .table tbody tr {
+    background: #fff;
+  }
+  .table tbody th, .table tbody td {
+    border: none;
+    padding: 20px 30px;
+    font-size: 14px;
+    vertical-align: middle;
+  }
+  .table tbody td .close span {
+    font-size: 12px;
+    color: #dc3545;
+  }
