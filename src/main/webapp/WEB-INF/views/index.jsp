@@ -35,7 +35,7 @@
     <body>
         <!-- Body main wrapper start -->
         <div class="wrapper">
-            
+
             <!-- Start Header Style -->
             <header id="htc__header" class="htc__header__area header--one">
                 <!-- Start Mainmenu Area -->
@@ -393,17 +393,21 @@
 
             function display(data) {
                 var totavailable = 0;
+                $('html, body').animate({
+                    scrollTop: $("#record-list").offset().top
+                }, 100);
                 if (data.error == "0" || data.length == 0) {
                     $("#record-list").html("<h3>No Record Found</h3>");
                 } else {
 
-                    $("#record-list").html('<table class="table table-striped"><tbody>');
+                    var html = '<table class="table table-striped"><tbody>';
                     for (var res of data) {
                         var available = res.availability;
                         totavailable += parseInt(available);
-                        $("#record-list").append('<tr><th scope="row">' + res.name + '</th><td>' + res.description + '</td><td>' + res.discount + '</td><td>' + available + ' Available</td><td><a href="<%=request.getContextPath()%>/rent?id=' + res.id + '" class="btn btn-success pull-right">Rent Now</a></td></tr>');
+                        html += '<tr><th scope="row">' + res.name + '</th><td>' + res.description + '</td><td>' + res.discount + '</td><td>' + available + ' Available</td><td><a href="<%=request.getContextPath()%>/rent?id=' + res.id + '" class="btn btn-success pull-right">Rent Now</a></td></tr>';
                     }
-                    $("#record-list").append('</tbody></table>');
+                    html += '</tbody></table>';
+                    $("#record-list").html(html);
 
                     $(".locker-info").text(totavailable + " Lockers Available");
                 }

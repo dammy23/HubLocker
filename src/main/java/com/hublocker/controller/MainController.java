@@ -47,21 +47,28 @@ public class MainController {
         return model;
     }
 
+    @RequestMapping(value = "/rent", method = RequestMethod.GET)
+    public ModelAndView rentLocker(ModelAndView model) {
+        //Locker newLocker = new Locker();
+        //model.addObject("locker", newLocker);
+        model.setViewName("rental");
+        return model;
+    }
+
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public ModelAndView saveLocker(@ModelAttribute Locker locker) {
         lockerDAO.saveOrUpdate(locker);
         return new ModelAndView("redirect:/");
     }
-    
+
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public ModelAndView searchLocker(HttpServletRequest request) {
         String result = lockerDAO.searchLocker(request.getParameter("id"));
         ModelAndView model = new ModelAndView("searchApi");
         model.addObject("result", result);
-        
+
         return model;
-        
-        
+
     }
 
 }
