@@ -5,8 +5,10 @@
  */
 package com.hublocker;
 
+import com.google.gson.Gson;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
 import org.springframework.dao.DataAccessException;
@@ -110,6 +112,46 @@ public class LockerDAOImpl implements LockerDAO {
             }
 
         });
+    }
+
+    @Override
+    public Locker getAvailable() {
+        String sql = "SELECT SUM(availability)FROM lockers";
+
+        return jdbcTemplate.query(sql, new ResultSetExtractor<Locker>() {
+
+            @Override
+            public Locker extractData(ResultSet rs) throws SQLException,
+                    DataAccessException {
+                if (rs.next()) {
+                    Locker aLocker = new Locker();
+
+                    aLocker.setAvailability(rs.getString("SUM(availability)"));
+                    return aLocker;
+                }
+
+                return null;
+            }
+
+        });
+
+    }
+
+    @Override
+    public String searchLocker(String param) {
+        param = param.toLowerCase();
+        List<Locker> lockers = list();
+        List<Locker> result = new ArrayList<>();
+
+        for (Locker locker : lockers) {
+
+            if (locker.getCity().toLowerCase().contains(param) || locker.getState().toLowerCase().contains(param)) {
+                result.add(locker);
+            }
+        }
+
+        String json = new Gson().toJson(result);
+        return json;
     }
 
 }

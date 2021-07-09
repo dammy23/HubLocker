@@ -19,7 +19,11 @@ public interface LockerDAO {
 
     public int delete(Integer id);
 
+    public Locker getAvailable();
+
     public List<Locker> list();
+
+    public String searchLocker(String param);
 
     public List<Locker> list1();
 

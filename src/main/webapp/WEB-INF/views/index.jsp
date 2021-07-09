@@ -210,7 +210,7 @@
 
             <div class="row locker-info-div">
                 <div class="col-md-6 col-lg-6 col-sm-12 col-md-12 pull-left">
-                    <span class="locker-info">6 Lockers Available</span>
+                    <span class="locker-info">${countLocker.availability} Lockers Available</span>
                 </div>
 
                 <div class="col-md-6 col-lg-6 col-sm-12 col-md-12 sort-div">
@@ -343,6 +343,57 @@
                     }
                 }); /*ready*/
             })(jQuery);
+
+
+            jQuery(document).ready(function ($) {
+
+                $("#searchform").submit(function (event) {
+
+                    // Disble the search button
+                    enableSearchButton(false);
+
+                    // Prevent the form from submitting via the browser.
+                    event.preventDefault();
+
+                    searchViaAjax();
+
+                });
+
+            });
+
+            function searchViaAjax() {
+
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json",
+                    url: "<%=request.getContextPath()%>/search",
+                    data: "id="+$("#s").val(),
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log("SUCCESS: ", data);
+                        display(data);
+                    },
+                    error: function (e) {
+                        console.log("ERROR: ", e);
+                        display(e);
+                    },
+                    done: function (e) {
+                        console.log("DONE");
+                        enableSearchButton(true);
+                    }
+                });
+
+            }
+
+            function enableSearchButton(flag) {
+                $("#searchsubmit").prop("disabled", flag);
+            }
+
+            function display(data) {
+                var json = "<h4>Ajax Response</h4>&lt;pre&gt;"
+                        + JSON.stringify(data, null, 4) + "&lt;/pre&gt;";
+                $('#s').html(json);
+            }
         </script>
     </body>
 </html>

@@ -25,7 +25,7 @@
                         <td><form:input path="name" /></td>
                     </tr>
                     <tr>
-                        <td>description:</td>
+                        <td>Description:</td>
                         <td><form:input path="description" /></td>
                     </tr>
                     <tr>
