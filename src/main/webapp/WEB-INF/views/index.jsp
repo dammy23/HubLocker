@@ -6,6 +6,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8" />
@@ -34,6 +35,7 @@
     <body>
         <!-- Body main wrapper start -->
         <div class="wrapper">
+            
             <!-- Start Header Style -->
             <header id="htc__header" class="htc__header__area header--one">
                 <!-- Start Mainmenu Area -->
@@ -252,7 +254,7 @@
                         </div>
 
                         <div class="col-md-12">
-                            <div class="table-wrap table-responsive">
+                            <div class="table-wrap table-responsive" id="record-list">
                                 <table class="table table-striped">
                                     <tbody>
 
@@ -262,7 +264,7 @@
                                                 <td>${locker.description}</td>
                                                 <td>${locker.discount}</td>
                                                 <td>${locker.availability} Available</td>
-                                                <td><a href="rent?id=${locker.id}" class="btn btn-success pull-right">Rent Now</a></td>
+                                                <td><a href="<%=request.getContextPath()%>/rent?id=${locker.id}" class="btn btn-success pull-right">Rent Now</a></td>
 
                                             </tr>
                                         </c:forEach>  
@@ -367,7 +369,7 @@
                     type: "GET",
                     contentType: "application/json",
                     url: "<%=request.getContextPath()%>/search",
-                    data: "id="+$("#s").val(),
+                    data: "id=" + $("#s").val(),
                     dataType: 'json',
                     success: function (data) {
                         console.log("SUCCESS: ", data);
@@ -390,9 +392,24 @@
             }
 
             function display(data) {
-                var json = "<h4>Ajax Response</h4>&lt;pre&gt;"
-                        + JSON.stringify(data, null, 4) + "&lt;/pre&gt;";
-                $('#s').html(json);
+                var totavailable = 0;
+                if (data.error == "0" || data.length == 0) {
+                    $("#record-list").html("<h3>No Record Found</h3>");
+                } else {
+
+                    $("#record-list").html('<table class="table table-striped"><tbody>');
+                    for (var res of data) {
+                        var available = res.availability;
+                        totavailable += parseInt(available);
+                        $("#record-list").append('<tr><th scope="row">' + res.name + '</th><td>' + res.description + '</td><td>' + res.discount + '</td><td>' + available + ' Available</td><td><a href="<%=request.getContextPath()%>/rent?id=' + res.id + '" class="btn btn-success pull-right">Rent Now</a></td></tr>');
+                    }
+                    $("#record-list").append('</tbody></table>');
+
+                    $(".locker-info").text(totavailable + " Lockers Available");
+                }
+                $('html, body').animate({
+                    scrollTop: $("#record-list").offset().top
+                }, 100);
             }
         </script>
     </body>

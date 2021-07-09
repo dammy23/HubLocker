@@ -139,6 +139,10 @@ public class LockerDAOImpl implements LockerDAO {
 
     @Override
     public String searchLocker(String param) {
+
+        if (param == null) {
+            return "{\"error\":\"0\"}";
+        }
         param = param.toLowerCase();
         List<Locker> lockers = list();
         List<Locker> result = new ArrayList<>();
