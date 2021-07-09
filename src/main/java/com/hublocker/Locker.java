@@ -45,8 +45,8 @@ public class Locker {
 
     }
 
-    Locker() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Locker() {
+
     }
 
     public String getState() {

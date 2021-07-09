@@ -29,15 +29,15 @@ public class LockerDAOImpl implements LockerDAO {
 
     @Override
     public void saveOrUpdate(Locker locker) {
-        if (locker.getId() > 0) {
+        if (locker.getId() != null) {
             // update
-            String sql = "UPDATE locker SET name=?, description=?, availability=?, discount=?, price=?,city=?, "
+            String sql = "UPDATE lockers SET name=?, description=?, availability=?, discount=?, price=?,city=?, "
                     + "state=? WHERE id=?";
             jdbcTemplate.update(sql, locker.getName(), locker.getDescription(),
                     locker.getAvailability(), locker.getDiscount(), locker.getPrice(), locker.getCity(), locker.getState(), locker.getId());
         } else {
             // insert
-            String sql = "INSERT INTO locker (name, description, availability, discount, price,city,state)"
+            String sql = "INSERT INTO lockers (name, description, availability, discount, price,city,state)"
                     + " VALUES (?, ?, ?, ?, ?, ?, ?)";
             jdbcTemplate.update(sql, locker.getName(), locker.getDescription(),
                     locker.getAvailability(), locker.getDiscount(), locker.getPrice(), locker.getCity(), locker.getState());
@@ -47,13 +47,13 @@ public class LockerDAOImpl implements LockerDAO {
 
     @Override
     public int delete(Integer id) {
-        String sql = "DELETE FROM hublocker WHERE id=?";
+        String sql = "DELETE FROM lockers WHERE id=?";
         return jdbcTemplate.update(sql, id); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public List<Locker> list() {
-        String sql = "SELECT * FROM hublocker";
+        String sql = "SELECT * FROM lockers";
         List<Locker> listLocker = jdbcTemplate.query(sql, new RowMapper<Locker>() {
 
             @Override
@@ -79,7 +79,7 @@ public class LockerDAOImpl implements LockerDAO {
 
     @Override
     public List<Locker> list1() {
-        String sql = "SELECT * FROM hublocker";
+        String sql = "SELECT * FROM lockers";
 
         return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Locker.class));
         //To change body of generated methods, choose Tools | Templates.
@@ -87,7 +87,7 @@ public class LockerDAOImpl implements LockerDAO {
 
     @Override
     public Locker get(Integer lockerId) {
-        String sql = "SELECT * FROM hublocker WHERE id=" + lockerId;
+        String sql = "SELECT * FROM lockers WHERE id=" + lockerId;
         return jdbcTemplate.query(sql, new ResultSetExtractor<Locker>() {
 
             @Override
